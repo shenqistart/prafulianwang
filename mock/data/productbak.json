@@ -1,0 +1,86 @@
+[
+  {
+    "productId":1,
+    "productTitle":"小米（MI）MIX2 6GB+64GB 移动联通电信4G手机 全网通 双卡双待",
+    "productInfo":"该商品支持分期购买",
+    "productImg":"http://localhost:9001/img/products/phone.jpg",
+    "productPrice":1000,
+    "productHot":1000,
+    "productQuality":100,
+    "productClass":"phone",
+    "isHot":true,
+    "isCheap":true
+  },
+  {
+    "productId":2,
+    "productTitle":"小米（MI）MIX2 6GB+64GB 移动联通电信4G手机 全网通 双卡双待",
+    "productInfo":"该商品支持分期购买",
+    "productImg":"http://localhost:9001/img/products/phone.jpg",
+    "productPrice":1001,
+    "productHot":999,
+    "productQuality":80,
+    "productClass":"phone",
+    "isHot":true,
+    "isCheap":true
+  },
+  {
+    "productId":3,
+    "productTitle":"小米（MI）MIX2 6GB+64GB 移动联通电信4G手机 全网通 双卡双待",
+    "productInfo":"该商品支持分期购买",
+    "productImg":"http://localhost:9001/img/products/phone.jpg",
+    "productPrice":1002,
+    "productHot":998,
+    "productQuality":100,
+    "productClass":"phone",
+    "isHot":true,
+    "isCheap":true
+  },
+  {
+    "productId":4,
+    "productTitle":"小米（MI）MIX2 6GB+64GB 移动联通电信4G手机 全网通 双卡双待",
+    "productInfo":"该商品支持分期购买",
+    "productImg":"http://localhost:9001/img/products/phone.jpg",
+    "productPrice":10000,
+    "productHot":1001,
+    "productQuality":90,
+    "productClass":"phone",
+    "isHot":true,
+    "isCheap":true
+  },
+  {
+    "productId":21,
+    "productTitle":"E-3LUE/宜博 EHS937 眼镜蛇电竞游戏耳机（黑色）",
+    "productInfo":"重低音 头戴式 带麦话筒 超大耳罩 音质清晰 酷炫灯光",
+    "productImg":"http://localhost:9001/img/products/earphone.jpg",
+    "productPrice":4599,
+    "productHot":1000,
+    "productQuality":100,
+    "productClass":"earPhone",
+    "isHot":true,
+    "isCheap":true
+  },
+  {
+    "productId":31,
+    "productTitle":"联想（ThinkPad）E470-20H1A01LCD轻薄商务办公家用 14英寸笔记本 i5-6200U 4G 500 G920M 2G独显卡Win10（黑色）",
+    "productInfo":"高效办公 调整载入",
+    "productImg":"http://localhost:9001/img/products/computer.jpg",
+    "productPrice":4599,
+    "productHot":1000,
+    "productQuality":100,
+    "productClass":"computer",
+    "isHot":true,
+    "isCheap":true
+  },
+  {
+    "productId":41,
+    "productTitle":"夏普(SHARP) KC-BB30-W1 升级款净化器除甲醛雾霾 加湿型空气净化器",
+    "productInfo":"BB30升级款 四层滤网，强力集尘 该商品支持分期付款",
+    "productImg":"http://localhost:9001/img/products/computer.jpg",
+    "productPrice":4599,
+    "productHot":1000,
+    "productQuality":100,
+    "productClass":"household",
+    "isHot":true,
+    "isCheap":true
+  }
+]
