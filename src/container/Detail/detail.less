@@ -1,0 +1,51 @@
+.detail-container{
+  position: absolute;
+  margin: 0 auto;
+  width: 85%;
+  height: 100%;
+  top: 50px;
+  bottom:51px;
+  left: 0;
+  right: 0;
+}
+.detail-tab{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background: #333;
+  li{
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    p{
+      line-height: 50px;
+      &:nth-of-type(2){
+        flex-basis: 20%;
+        a{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          i{
+            height: 35px;
+            line-height: 35px;
+            font-size: 25px;
+            color: #257eff;
+          }
+          span{
+            height: 10px;
+            line-height: 10px;
+            font-size: 6px;
+          }
+
+        }
+      }
+      &:nth-of-type(1){
+        background: blue;
+        color: #fff;
+      }
+    }
+  }
+}

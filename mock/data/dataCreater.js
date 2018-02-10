@@ -11,11 +11,7 @@ let creator = function () {
     let productClass =Math.round(Math.random()*3);
     switch (productClass){
       case 0:
-<<<<<<< HEAD
         obj.productTitle="小米（MI）NOTE3 6GB+64GB 移动联通电信4G手机 全网通 双卡双待";
-=======
-        obj.productTitle="小米（MI）MIX2 6GB+64GB 移动联通电信4G手机 全网通 双卡双待";
->>>>>>> a34bf4cf7a3517dc6b7ba03f3acd248b2e28f102
         obj.productInfo="该商品支持分期购买";
         obj.productImg="http://localhost:9001/img/products/phone.jpg";
         obj.productPrice=Math.round(Math.random()*(2000-500)+500);

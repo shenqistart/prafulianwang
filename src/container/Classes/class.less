@@ -1,0 +1,35 @@
+.class-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  li{
+    height: 80px;
+    border-bottom: 1px solid gray;
+    //line-height: 80px;
+    a{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      i{
+        flex-basis: 20%;
+        font-size: 40px;
+        text-align: center;
+        line-height: 60px;
+      }
+      div{
+        flex-basis: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        p{
+          &:nth-of-type(1){
+            color: #000000;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
