@@ -29,8 +29,8 @@ export default class List extends React.Component {
         title='电脑专区';
         break;
       case 'earphone':
-      title='办公专区';
-      break;
+        title='办公专区';
+        break;
       case 'household':
         title='家用专区';
         break;
@@ -78,29 +78,30 @@ export default class List extends React.Component {
     console.log(this.state,'2');
     return (
       <div>
-      <Header hasBack={true} hasSearch={false} title={this.title}/>
-      <div className="list-header">
-        <ul onClick={this.handleClick}>
-          <li><span>销量</span><em></em></li>
-          <li><span>价格</span><em></em></li>
-          <li><span>评论</span><em></em></li>
-        </ul>
-      </div>
-      <div className="lists-container">
-        <ul className="lists-box">
-          {this.state.products.map((item,index)=>(
-            <Link to={{pathname:`/detail`, state:{item}}} key={index}>
-              <li className="lists-item" >
-                <img src={item.productImg}/>
-                <p>{item.productTitle}</p>
-                <p>
-                  <span>￥{item.productPrice}</span>
-                </p>
-              </li>
-            </Link>
-          ))}
-        </ul>
-      </div>
-    </div>)
+        <Header hasBack={true} hasSearch={false} title={this.title}/>
+        <div className="list-header">
+          <ul onClick={this.handleClick}>
+            <li><span>销量</span><em></em></li>
+            <li><span>价格</span><em></em></li>
+            <li><span>评论</span><em></em></li>
+          </ul>
+        </div>
+        <div className="lists-container">
+          <ul className="lists-box">
+            {this.state.products.map((item,index)=>(
+              <Link to={{pathname:`/detail`, state:{item}}} key={index}>
+                <li className="lists-item" >
+                  <img src={item.productImg}/>
+                  <p>{item.productTitle}</p>
+                  <p>
+                    <span>￥{item.productPrice}</span>
+                    <i className="iconfont icon-xiazai1" onClick={(e)=>this.handleAdd(e,item)}></i>
+                  </p>
+                </li>
+              </Link>
+            ))}
+          </ul>
+        </div>
+      </div>)
   }
 }

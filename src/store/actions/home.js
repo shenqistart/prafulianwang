@@ -3,6 +3,7 @@ import {getSliders,getHomeHot} from "../../API/index";
 let action={
      getSliderAPI(){
        return function (dispatch,getState) {
+
          dispatch({type:Types.SET_SLIDERS,payload:getSliders()});
          // debugger;
        }

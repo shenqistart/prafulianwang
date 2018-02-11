@@ -11,7 +11,7 @@ app.use(session({
   saveUninitialized:false,
   secret:'hhh',
 }));
-app.use(express.static(path.resolve(__dirname,'../dist')));//在目录下的dist文件件中找文件
+app.use(express.static(path.resolve(__dirname)));//在目录下的dist文件件中找文件
 app.use(function (req,res,next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:9999");
   res.header("Access-Control-Allow-Credentials",true);
@@ -47,28 +47,13 @@ app.use(function (req,res,next) {
     next();
   },res);
 });
-//获取某一个商品的详情信息{
-//    productId:1,productTitle:"小米（MI）MIX2 6GB+64GB 移动联通电信4G手机 全网通 双卡双待",
-//    productInfo:"该商品支持分期购买",
-//    productImg:"http://localhost:9000/img/products/phone.jpg",
-//    productPrice:1000,
-//    productHot:1000,
-//    productQuality:100,
-//    productClass:{
-//      levelOne:0,
-//      levelTwo:0,
-//    },
-// }
+
 app.get("/product/:id",function (req,res) {
   let id = req.params.id;
   let product = req.productData.find(item=>item.productId==id);
   res.json(product);
 });
-//获取商品列表（offset,limit,hasmore） 返回:
-//{
-//    hasMore:
-//    lists:[]
-// }
+
 app.get('/products/:productClass',function (req,res) {
   switch (req.params.productClass){
     case "phone":
@@ -139,7 +124,7 @@ app.get('/updateHomeHot',function (req,res) {
   res.json(obj);
 });
 //购物车添加商品
-app.post("/addproducttocar",function (req,res) {
+app.post("/addProductToCart",function (req,res) {
   let {productId,count,userId} = req.body;
   let user =req.userData.find(item=>item.userId == userId);
   let product = user.cart.find(item=>item.productId == productId);
@@ -149,7 +134,6 @@ app.post("/addproducttocar",function (req,res) {
     user.cart.push({productId,count});
   }
   console.log(JSON.stringify(req.userData));
-  // util.setData("./data/user.json",)
   util.setData("./data/user.json",req.userData,()=>{
     res.json({user,success:"添加成功"});
   },()=>{
@@ -157,7 +141,7 @@ app.post("/addproducttocar",function (req,res) {
   })
 });
 //更新购物车内容
-app.post("/updatecar",function (req,res) {
+app.post("/updateCart",function (req,res) {
   let {productList,userId} = req.body;
   let user =req.userData.find(item=>item.userId == userId);
   user.cart=[...productList];
@@ -221,4 +205,3 @@ app.post('/reg',function (req,res) {
   });
 
 });
-//修改用户信息

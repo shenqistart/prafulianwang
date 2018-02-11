@@ -46,10 +46,10 @@ export let getCartProductList=(id)=>{
 
 //更新购物车信息
 export let updateCartProduct = (data)=>{
-  return axios.post('/updatecar',data);
+  return axios.post('/updateCart',data);
 };
 
 //更新购物车后重新获取购物车内容
-// export let getNewCart = (userId)=>{
-//   return axios.get(`/getNewCart/${userId}`);
-// };
+export let getNewCart = (userId)=>{
+  return axios.get(`/getNewCart/${userId}`);
+};
