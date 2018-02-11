@@ -4,10 +4,14 @@ let path = require("path");
 let util = require("./util.js");
 let app = express();
 let session = require("express-session");
-app.listen(9002);
+app.listen(9001);
 app.use(bodyParser.json());
-
-app.use(express.static(path.resolve(__dirname)));
+app.use(session({
+  resave:true,    //每次重新保存
+  saveUninitialized:false,
+  secret:'hhh',
+}));
+app.use(express.static(path.resolve(__dirname,'../dist')));//在目录下的dist文件件中找文件
 app.use(function (req,res,next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:9999");
   res.header("Access-Control-Allow-Credentials",true);
@@ -33,6 +37,13 @@ app.use(function (req,res,next) {
   util.getData("./data/sliders.json",(data)=>{
     // console.log(data);
     req.slidersData = data;
+    next();
+  },res);
+});
+app.use(function (req,res,next) {
+  util.getData("./data/user.json",(data)=>{
+    // console.log(data);
+    req.userData = data;
     next();
   },res);
 });
@@ -127,3 +138,87 @@ app.get('/updateHomeHot',function (req,res) {
   obj={phone,earPhone,computer,household};
   res.json(obj);
 });
+//购物车添加商品
+app.post("/addproducttocar",function (req,res) {
+  let {productId,count,userId} = req.body;
+  let user =req.userData.find(item=>item.userId == userId);
+  let product = user.cart.find(item=>item.productId == productId);
+  if(product){
+    product.count = count;
+  }else{
+    user.cart.push({productId,count});
+  }
+  console.log(JSON.stringify(req.userData));
+  // util.setData("./data/user.json",)
+  util.setData("./data/user.json",req.userData,()=>{
+    res.json({user,success:"添加成功"});
+  },()=>{
+    res.json({fail:"添加失败"});
+  })
+});
+//更新购物车内容
+app.post("/updatecar",function (req,res) {
+  let {productList,userId} = req.body;
+  let user =req.userData.find(item=>item.userId == userId);
+  user.cart=[...productList];
+  // console.log(JSON.stringify(req.userData));
+  // util.setData("./data/user.json",)
+  util.setData("./data/user.json",req.userData,()=>{
+    res.json({user,success:"更新成功"});
+  },()=>{
+    res.json({fail:"更新失败"});
+  })
+});
+//更新后重新获取购物车内容
+app.get("/getNewCart/:userId",function (req,res) {
+  let user = req.userData.find(item=>item.userId=req.params.userId);
+  res.json(user);
+});
+//获取购物车信息
+app.get('/CartProductList/:id',function (req,res) {
+  let id = req.params.id;
+  let user = req.userData.find(item=>item.userId == id);
+  if(!user){res.json({fail:"没有找到该用户"});}
+  let productList = user.cart.map(item=>{
+    return {product:req.productData[item.productId],count:item.count};
+  });
+  res.json(productList);
+});
+let crypto = require('crypto');
+//用户登陆
+app.post('/login',function (req,res) {
+  let{username,password} = req.body;
+  let user= req.userData.find(item=>item.userName==username);
+  if(!user){
+    res.json({success:"",fail:"不存在的用户名",user:{}});
+  }
+  if(user.password== crypto.createHash('md5').update(password).digest('base64')){
+    res.json({success:"登陆成功",user,fail:""})
+  }else{
+    res.json({success:"",fail:"账号或密码错误",user:{}});
+  }
+});
+//用户注册:
+app.post('/reg',function (req,res) {
+  let obj = {};
+  let{username,password} = req.body;
+  if(req.userData.find(item=>item.userName==username)){
+    res.json({fail:"注册失败,已经存在的用户名"});
+    return ;
+  }
+  obj.userName=username;
+  password = crypto.createHash('md5').update(password).digest('base64');
+  obj.password = password;
+  obj.userId = new Date().getTime();
+  obj.userImg="http://localhost:9001/img/users/default.png";
+  obj.userSex = 0;
+  obj.cart=[];
+  req.userData.push(obj);
+  util.setData("./data/user.json",req.userData,()=>{
+    res.json({success:"注册成功"});
+  },()=>{
+    res.json({fail:"注册失败"})
+  });
+
+});
+//修改用户信息
