@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import actions from '../../store/actions/home'
 import HomeProducts from "./HomeProducts";
 import Tab from "../../components/Tab/Tab";
-@connect(state=>({...state.home}),actions)
+@connect(state=>({...state.home,...state.cart}),actions)
 export default class Home extends React.Component{
   componentDidMount(){
     if(this.props.sliders.length === 0){// 如果没有数据我才请求 redux里有数据了我就不请求了
@@ -39,7 +39,7 @@ export default class Home extends React.Component{
               <div className="home-hot-refresh">
                 <p>商品已经刷新</p>
               </div>
-              <Tab/>
+              <Tab productList={this.props.productList}/>
             </div>
         )
     }

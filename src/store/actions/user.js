@@ -10,6 +10,11 @@ let actions={
     return function (dispatch,getState) {
       dispatch({type:Types.SET_LOGIN,payload:login(data)});
     }
+  },
+  clearLogin(){
+    return {
+      type:Types.CLEAR_LOGIN
+    }
   }
 };
 export default actions;

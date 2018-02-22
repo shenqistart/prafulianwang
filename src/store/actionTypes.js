@@ -2,6 +2,7 @@ export const SET_SLIDERS='SET_SLIDERS';
 export const SET_HomeHot='SET_HomeHot';
 export const SET_REG='SET_REG';
 export const SET_LOGIN='SET_LOGIN';
+export const CLEAR_LOGIN='CLEAR_LOGIN';
 
 export const CART_PRODUCTLIST = "cart_productlist";
 export const CART_ADD = "cart_add";

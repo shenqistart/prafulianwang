@@ -13,6 +13,8 @@ import store from './store/index';
 import Detail from "./container/Detail/Detail";
 import Profile from "./container/Profile/Profile";
 import List from "./container/List/List";
+import Blank from "./container/Blank/Blank";
+import ProtectedRoute from "./components/ProtectedRouter/ProtectedRouter";
 ReactDOM.render(
   <Provider store={store}>
     <Router>
@@ -24,8 +26,9 @@ ReactDOM.render(
           <Route path="/login" component={Login}/>
           <Route path="/reg" component={Reg}/>
           <Route path="/detail/:id" component={Detail}/>
-          <Route path="/profile" component={Profile}/>
+          <ProtectedRoute path="/profile" component={Profile}/>
           <Route path="/lists/:type" component={List}/>
+          <Route path="/blank" component={Blank}/>
           <Redirect to="/home"/>
         </Switch>
       </App>

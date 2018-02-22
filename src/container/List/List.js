@@ -4,6 +4,9 @@ import Header from "../../components/Header/Header";
 import './list.less';
 import {getProducts} from '../../API';
 import 'babel-polyfill';
+import {connect} from "react-redux";
+import actions from "../../store/actions/index";
+@connect(state=>({...state}),actions)
 export default class List extends React.Component {
   constructor(){
     super();
@@ -72,7 +75,13 @@ export default class List extends React.Component {
       }
     }
   }
-
+  handleAdd=(e,item)=>{
+    e.preventDefault();
+    this.props.addProduct(item);
+    if(this.props.user.login.user){
+      let id = this.props.user.login.user.userId;
+    }
+  };
   render(){
     console.log(this.props,'1');
     console.log(this.state,'2');

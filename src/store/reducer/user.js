@@ -15,8 +15,9 @@ function user(state=initState,actions) {//actions不用引入进来，dispatch�
       return {...state,reg:{...actions.payload}};
     case Types.SET_LOGIN:
       return {...state,login:{...actions.payload}};
+    case Types.CLEAR_LOGIN:
+      return {...state,login:{ success:'',fail:'',user:{}}};
   }
-
   return state;
 }
 export default user;
